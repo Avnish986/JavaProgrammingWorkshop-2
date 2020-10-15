@@ -23,18 +23,20 @@ public class HotelManagementMain {
 			int op = sc.nextInt();
 			switch (op) {
 			case 1:
-					System.out.println("Enter hotel name");
-					String name = sc.next();
-					boolean isValid = valid.validateHotelName(name);
-					while (!isValid) {
-						System.out.println("Invalid hotel name");
-						name = sc.next();
-						isValid = valid.validateHotelName(name);
-					}			
-					System.out.println("Enter regular customer rate");
-					int rate = sc.nextInt();
-					hotelList.addHotel(name, rate);
-					break; 
+				System.out.println("Enter hotel name");
+				String name = sc.next();
+				boolean isValid = valid.validateHotelName(name);
+				while (!isValid) {
+					System.out.println("Invalid hotel name");
+					name = sc.next();
+					isValid = valid.validateHotelName(name);
+				}
+				System.out.println("Enter regular customer rate weekday");
+				int rateDay = sc.nextInt();
+				System.out.println("Enter regular customer rate weekend");
+				int rateEnd = sc.nextInt();
+				hotelList.addHotel(name, rateDay, rateEnd);
+				break;
 			case 2:
 				System.out.println(hotelList);
 				break;
@@ -42,7 +44,7 @@ public class HotelManagementMain {
 				System.out.println("Enter the date range(ddMMMyyyy)");
 				String range = sc.next();
 				hotelList.getCheapHotel(range);
-				
+
 				break;
 			case 4:
 				System.out.println("Bye");
