@@ -41,7 +41,7 @@ public class HotelManagementMain {
 				System.out.println(hotelList);
 				break;
 			case 3:
-				System.out.println("Enter the date range(ddMMMyyyy)");
+				System.out.println("Enter the date range(ddMMMyyyy,ddMMMyyyy)");
 				String range = sc.next();
 				hotelList.getCheapHotel(range);
 
