@@ -35,7 +35,9 @@ public class HotelManagementMain {
 				int rateDay = sc.nextInt();
 				System.out.println("Enter regular customer rate weekend");
 				int rateEnd = sc.nextInt();
-				hotelList.addHotel(name, rateDay, rateEnd);
+				System.out.println("Enter rating");
+				int rating = sc.nextInt();
+				hotelList.addHotel(name, rateDay, rateEnd, rating);
 				break;
 			case 2:
 				System.out.println(hotelList);
