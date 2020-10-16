@@ -17,8 +17,10 @@ public class HotelList {
 		hotelList = new ArrayList<>();
 	}
 
-	public void addHotel(String hotel_name, int rateRegularCustWeekday, int rateRegularCustWeekend, int rating) {
-		Hotel hotel = new Hotel(hotel_name, rateRegularCustWeekday, rateRegularCustWeekend, rating);
+	public void addHotel(String hotel_name, int rateRegularCustWeekday, int rateRegularCustWeekend, int rating,
+			int rateRewardCustWeekday, int rateRewardCustWeekend) {
+		Hotel hotel = new Hotel(hotel_name, rateRegularCustWeekday, rateRegularCustWeekend, rating,
+				rateRewardCustWeekday, rateRewardCustWeekend);
 		hotelList.add(hotel);
 	}
 
@@ -38,9 +40,9 @@ public class HotelList {
 			int tempDay = day;
 			for (int i = 0; i < noOfDays; i++) {
 				if (tempDay == 0 || tempDay == 6) {
-					price += k.getRateWeekend();
+					price += k.getRateWeekendRegular();
 				} else {
-					price += k.getRateWeekday();
+					price += k.getRateWeekdayRegular();
 				}
 				tempDay = (tempDay + 1) % 7;
 			}
@@ -101,9 +103,9 @@ public class HotelList {
 			int tempDay = day;
 			for (int i = 0; i < noOfDays; i++) {
 				if (tempDay == 0 || tempDay == 6) {
-					price += k.getRateWeekend();
+					price += k.getRateWeekendRegular();
 				} else {
-					price += k.getRateWeekday();
+					price += k.getRateWeekdayRegular();
 				}
 				tempDay = (tempDay + 1) % 7;
 			}

@@ -33,12 +33,16 @@ public class HotelManagementMain {
 					isValid = valid.validateHotelName(name);
 				}
 				System.out.println("Enter regular customer rate weekday");
-				int rateDay = sc.nextInt();
+				int rateDayRegular = sc.nextInt();
 				System.out.println("Enter regular customer rate weekend");
-				int rateEnd = sc.nextInt();
+				int rateEndRegular = sc.nextInt();
 				System.out.println("Enter rating");
 				int rating = sc.nextInt();
-				hotelList.addHotel(name, rateDay, rateEnd, rating);
+				System.out.println("Enter reward customer rate weekday");
+				int rateDayReward = sc.nextInt();
+				System.out.println("Enter reward customer rate weekend");
+				int rateEndReward = sc.nextInt();
+				hotelList.addHotel(name, rateDayRegular, rateEndRegular, rating, rateDayReward, rateEndReward);
 				break;
 			case 2:
 				System.out.println(hotelList);
