@@ -17,9 +17,10 @@ public class HotelManagementMain {
 		while (true) {
 			System.out.println("Press 1 to Add a Hotel");
 			System.out.println("Press 2 to View a Hotel and Rate");
-			System.out.println("Press 3 to Get cheapest hotel");
+			System.out.println("Press 3 to Get cheapest hotel for regular type");
 			System.out.println("Press 4 to Get best hotel");
-			System.out.println("Press 5 to Quit");
+			System.out.println("Press 5 to Get cheapest hotel for reward type");
+			System.out.println("Press 6 to Quit");
 			Scanner sc = new Scanner(System.in);
 			int op = sc.nextInt();
 			switch (op) {
@@ -50,15 +51,20 @@ public class HotelManagementMain {
 			case 3:
 				System.out.println("Enter the date range(ddMMMyyyy,ddMMMyyyy)");
 				String range = sc.next();
-				hotelList.getCheapHotel(range);
+				hotelList.getCheapHotelRegular(range);
 				break;
 
 			case 4:
 				System.out.println("Enter the date range(ddMMMyyyy,ddMMMyyyy)");
 				String range2 = sc.next();
-				hotelList.getBestHotel(range2);
+				hotelList.getBestHotelRegular(range2);
 				break;
 			case 5:
+				System.out.println("Enter the date range(ddMMMyyyy,ddMMMyyyy)");
+				String range3 = sc.next();
+				hotelList.getCheapHotelReward(range3);
+				break;
+			case 6:
 				System.out.println("Bye");
 				return;
 

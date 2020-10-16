@@ -24,7 +24,7 @@ public class HotelList {
 		hotelList.add(hotel);
 	}
 
-	public void getCheapHotel(String dates) throws ParseException {
+	public void getCheapHotelRegular(String dates) throws ParseException {
 		String[] range = dates.split(",");
 		SimpleDateFormat dateFormat = new SimpleDateFormat("ddMMMyyyy");
 		Date checkin = (Date) dateFormat.parse(range[0]);
@@ -88,7 +88,7 @@ public class HotelList {
 		return "";
 	}
 
-	public void getBestHotel(String range2) throws ParseException {
+	public void getBestHotelRegular(String range2) throws ParseException {
 		String[] range = range2.split(",");
 		SimpleDateFormat dateFormat = new SimpleDateFormat("ddMMMyyyy");
 		Date checkin = (Date) dateFormat.parse(range[0]);
@@ -138,5 +138,62 @@ public class HotelList {
 		}
 		System.out.print(finalHotel.get(0) + " & Total Rates $" + finalPrice + "\n");
 
+	}
+	public void getCheapHotelReward(String dates) throws ParseException {
+		String[] range = dates.split(",");
+		SimpleDateFormat dateFormat = new SimpleDateFormat("ddMMMyyyy");
+		Date checkin = (Date) dateFormat.parse(range[0]);
+		Date checkout = (Date) dateFormat.parse(range[1]);
+		long difference = checkout.getTime() - checkin.getTime();
+		int noOfDays = (int) ((difference / (1000 * 60 * 60 * 24)) + 1);
+		int day = checkin.getDay();
+		int min = Integer.MAX_VALUE;
+		Map<String, Integer> list = new HashMap<>();
+		Map<String, Integer> byRating = new HashMap<>();
+		for (Hotel k : hotelList) {
+			int price = 0;
+			int tempDay = day;
+			for (int i = 0; i < noOfDays; i++) {
+				if (tempDay == 0 || tempDay == 6) {
+					price += k.getRateWeekendReward();
+				} else {
+					price += k.getRateWeekdayReward();
+				}
+				tempDay = (tempDay + 1) % 7;
+			}
+			if (min > price) {
+				min = price;
+			}
+			list.put(k.getName(), price);
+			byRating.put(k.getName(), k.getRating());
+
+		}
+		List<String> finalHotel = new ArrayList<>();
+		int minRate = -1;
+		for (Map.Entry<String, Integer> entry : list.entrySet()) {
+			if (entry.getValue() == min) {
+				for (Map.Entry<String, Integer> entry1 : byRating.entrySet()) {
+					if (entry1.getValue() > minRate && entry1.getKey().equals(entry.getKey())) {
+						minRate = entry1.getValue();
+						if (finalHotel.size() == 0)
+							finalHotel.add(entry1.getKey());
+						else
+							finalHotel.set(0, entry1.getKey());
+					}
+				}
+			}
+		}
+		int finalRating = 0, finalPrice = 0;
+		for (Map.Entry<String, Integer> entry : list.entrySet()) {
+			if (entry.getKey().equals(finalHotel.get(0))) {
+				finalPrice = entry.getValue();
+				for (Map.Entry<String, Integer> entry1 : byRating.entrySet()) {
+					if (entry1.getKey().equals(finalHotel.get(0))) {
+						finalRating = entry1.getValue();
+					}
+				}
+			}
+		}
+		System.out.print(finalHotel.get(0) + "," + " Rating: " + finalRating + " Total Rates:$" + finalPrice + "\n");
 	}
 }
