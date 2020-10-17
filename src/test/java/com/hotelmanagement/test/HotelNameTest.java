@@ -12,7 +12,7 @@ public class HotelNameTest {
 	public void givenHotelNameValidReturnTrue() {
 		HotelValidation valid = new HotelValidation();
 		boolean result = valid.validateHotelName("Lakewood");
-		Assert.assertEquals(true,result);
+		Assert.assertEquals(true, result);
 
 	}
 
@@ -20,7 +20,7 @@ public class HotelNameTest {
 	public void givenHotelNameInValidReturnFalse() {
 		HotelValidation valid = new HotelValidation();
 		boolean result = valid.validateHotelName("lakewood");
-		Assert.assertEquals(false,result);
+		Assert.assertEquals(false, result);
 
 	}
 }
