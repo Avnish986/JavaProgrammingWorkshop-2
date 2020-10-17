@@ -53,7 +53,6 @@ public class HotelManagementMain {
 				String range = sc.next();
 				hotelList.getCheapHotelRegular(range);
 				break;
-
 			case 4:
 				System.out.println("Enter the date range(ddMMMyyyy,ddMMMyyyy)");
 				String range2 = sc.next();
@@ -62,7 +61,7 @@ public class HotelManagementMain {
 			case 5:
 				System.out.println("Enter the date range(ddMMMyyyy,ddMMMyyyy)");
 				String range3 = sc.next();
-				hotelList.getCheapHotelReward(range3);
+				hotelList.getCheapestBestRatedReward(range3);
 				break;
 			case 6:
 				System.out.println("Bye");
