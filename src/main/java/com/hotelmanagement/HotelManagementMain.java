@@ -51,7 +51,7 @@ public class HotelManagementMain {
 			case 3:
 				System.out.println("Enter the date range(ddMMMyyyy,ddMMMyyyy)");
 				String range = sc.next();
-				hotelList.getCheapHotelRegular(range);
+				hotelList.getCheapestBestRatedRegular(range);
 				break;
 			case 4:
 				System.out.println("Enter the date range(ddMMMyyyy,ddMMMyyyy)");
